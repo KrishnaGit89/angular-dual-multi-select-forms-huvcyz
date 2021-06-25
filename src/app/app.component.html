@@ -1,0 +1,38 @@
+<div class="jumbotron text-center">
+  <h1 class="display-5">
+    Angular Dual Multiselect
+  </h1>
+</div>
+
+<div class="container">
+  <div class="row custom-wrapper">
+    <div class="col-md-12">
+
+      <!-- Form starts -->
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <!-- Gender -->
+        <div class="group-gap">
+          <div class="d-block my-3">
+
+            <div class="mb-3">
+              <select multiple class="custom-select" formControlName="cityName">
+
+              <option *ngFor="let city of City" [ngValue]="city" (change)="changeCity($event)">{{city}}</option>
+            </select>
+
+              <!-- error block -->
+              <div class="invalid-feedback" *ngIf="isSubmitted && cityName.errors?.required">
+                <sup>*</sup>Please enter your city name
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+      </form><!-- Form ends -->
+
+    </div>
+  </div>
+</div>
