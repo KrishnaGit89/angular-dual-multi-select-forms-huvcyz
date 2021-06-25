@@ -53,10 +53,11 @@ export class AppComponent implements OnInit, DoCheck, OnChanges {
   presenter: any;
   destinationDiffer: any;
   CityLeft: any;
-  CityRight: any = ['Hyderabad'];
+  CityRight: any ;
   sourceStations: any;
   keepSorted: boolean;
   sourceDiffer: any ;
+destinationStations: any;
 
   constructor(public fb: FormBuilder, private differs: IterableDiffers) {
     this.available = new BasicList(this.AVAILABLE_LIST_NAME);
@@ -73,6 +74,9 @@ export class AppComponent implements OnInit, DoCheck, OnChanges {
       { key: 7, station: 'Monero', state: 'NM' }
     ];
     this.sourceStations = JSON.parse(JSON.stringify(this.CityLeft));
+    this.CityRight =[{key: 31, station: 'Hyderabad', state: 'HYD'}];
+    this.destinationStations = JSON.parse(JSON.stringify(this.CityRight));
+    this.destination = this.CityRight;
     this.key = 'key';
     this.display = 'station'; // [ 'station', 'state' ];
     this.keepSorted = true;
