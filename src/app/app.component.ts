@@ -11,21 +11,23 @@ export class AppComponent {
   isSubmitted = false;
 
   // City Names
-  City: any = ['Florida', 'South Dakota', 'Tennessee', 'Michigan', 'New York']
+  CityLeft: any = ['Florida', 'South Dakota', 'Tennessee', 'Michigan', 'New York']
+
+  CityRight: any =["Hyderabad"];
 
   constructor(public fb: FormBuilder) { }
 
   /*########### Form ###########*/
   leftForm = this.fb.group({
-    cityName: ['', [Validators.required]]
+    CityLeft: ['', [Validators.required]]
   })
   rightForm = this.fb.group({
-    cityName: ['', [Validators.required]]
+    CityRight: ['', [Validators.required]]
   })
 
   // Getter method to access formcontrols
   get cityName() {
-    return this.leftForm.get('cityName');
+    return this.leftForm.get('CityLeft');
   }
 
   /*########### Template Driven Form ###########*/

@@ -241,6 +241,8 @@ body .btn-danger:hover {
 }
 .mb-3 option{
   display: inline;
+  padding: 2px 2px 2px 2px;
+  margin: 2px 2px 2px 2px;
 }
 
 .my-3 {

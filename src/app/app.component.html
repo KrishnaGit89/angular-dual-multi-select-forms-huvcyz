@@ -15,13 +15,13 @@
         <div class="d-block my-3">
 
           <div class="mb-3">
-            <select multiple class="custom-select" formControlName="cityName">
+            <select multiple class="custom-select" formControlName="CityLeft">
 
-            <option *ngFor="let city of City" [ngValue]="city" (change)="changeCity($event)">{{city}}</option>
+            <option *ngFor="let city of CityLeft" [ngValue]="city" (change)="changeCity($event)">{{city}}</option>
           </select>
 
             <!-- error block -->
-            <div class="invalid-feedback" *ngIf="isSubmitted && cityName.errors?.required">
+            <div class="invalid-feedback" *ngIf="isSubmitted && CityLeft.errors?.required">
               <sup>*</sup>Please enter your city name
             </div>
           </div>
@@ -42,13 +42,13 @@
         <div class="d-block my-3">
 
           <div class="mb-3">
-            <select multiple class="custom-select" formControlName="cityName">
+            <select multiple class="custom-select" formControlName="CityRight">
 
-            <option *ngFor="let city of City" [ngValue]="city" (change)="changeCity($event)">{{city}}</option>
+            <option *ngFor="let city of CityRight" [ngValue]="city" (change)="changeCity($event)">{{city}}</option>
           </select>
 
             <!-- error block -->
-            <div class="invalid-feedback" *ngIf="isSubmitted && cityName.errors?.required">
+            <div class="invalid-feedback" *ngIf="isSubmitted && CityRight.errors?.required">
               <sup>*</sup>Please enter your city name
             </div>
           </div>
