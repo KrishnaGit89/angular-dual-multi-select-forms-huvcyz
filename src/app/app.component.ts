@@ -65,16 +65,16 @@ destinationStations: any;
   }
   ngOnInit() {
     this.CityLeft = [
-      { key: 1, station: 'Antonito', state: 'CO' },
-      { key: 2, station: 'Big Horn', state: 'NM' },
-      { key: 3, station: 'Sublette', state: 'NM' },
-      { key: 4, station: 'Toltec', state: 'NM' },
-      { key: 5, station: 'Osier', state: 'CO' },
-      { key: 6, station: 'Chama', state: 'NM' },
-      { key: 7, station: 'Monero', state: 'NM' }
+      { key: 1, station: 'Hyderabad', state: 'HYD' },
+      { key: 2, station: 'Banglore', state: 'BNG' },
+      { key: 3, station: 'WestBengal', state: 'NM' },
+      { key: 4, station: 'Delhi', state: 'NM' },
+      { key: 5, station: 'Mumbai', state: 'CO' },
+      { key: 6, station: 'Goa', state: 'NM' },
+      { key: 7, station: 'Lucknow', state: 'NM' }
     ];
     this.sourceStations = JSON.parse(JSON.stringify(this.CityLeft));
-    this.CityRight =[{key: 31, station: 'Hyderabad', state: 'HYD'}];
+    this.CityRight =[{key: 1, station: 'Hyderabad', state: 'HYD'}];
     this.destinationStations = JSON.parse(JSON.stringify(this.CityRight));
     this.destination = this.CityRight;
     this.key = 'key';
