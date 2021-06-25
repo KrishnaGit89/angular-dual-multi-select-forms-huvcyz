@@ -5,9 +5,9 @@
 </div>
 
 <div class="container">
-  <div class="row custom-wrapper">
-    <div class="col-md-12">
-      <div class="col-md-6" style="display:inline-block;">
+  
+   
+      <div class="col-md-4" style="display:inline-block;">
         <!-- Form starts -->
         <form [formGroup]="leftForm" (ngSubmit)="onSubmit()">
           <!-- Gender -->
@@ -21,9 +21,6 @@
               [ngClass]="{selected: isItemSelected(available.pick, item), disabled: disabled}"
               [draggable]="!disabled && format.draggable" (dragstart)="drag($event, item, available)" (dragend)="dragEnd(available)"
               >{{item._name}}</option>
-<!-- 
-            <option *ngFor="let city of CityLeft" [ngValue]="city" (change)="changeCity($event)">{{city}}</option> -->
-
           </select>
 
                 <!-- error block -->
@@ -34,16 +31,25 @@
 
             </div>
           </div>
+          
           <div id="outer">
             <div class="inner">
-              <button type="submit" class="btn btn-primary pull-left" (click)="selectAll(available)" [disabled]="disabled || isAllSelected(available)" style ="display:inline;">All</button>
+              <button type="submit" class="btn btn-primary pull-left" (click)="selectAll(available)" [disabled]="disabled || isAllSelected(available)" style ="display:inline;">Select All</button>
             </div>
             <div class="inner"><button type="submit" class="btn btn-primary pull-right" (click)="selectNone(available)"
           [disabled]="!isAnySelected(available)"  style ="display:inline;">None</button></div>
           </div>
         </form><!-- Form ends -->
       </div>
-      <div class="col-md-6" style="display:inline-block">
+      <div  class="col-md-4" style="display:inline-block;margin: 20px;">
+      <button type="button" name="addBtn" class="btn btn-primary btn-block"
+  (click)="moveItem(available, confirmed)" [ngClass]="'point-right'" 
+  [disabled]="available.pick.length === 0"></button>
+  <button type="button" name="removeBtn" class="btn btn-primary btn-block"
+			(click)="moveItem(confirmed, available)" [ngClass]="'point-left'"
+			[disabled]="confirmed.pick.length === 0"></button>
+      </div>
+      <div class="col-md-4" style="display:inline-block">
         <!-- Form starts -->
         <form [formGroup]="rightForm" (ngSubmit)="onSubmit()">
           <!-- Gender -->
@@ -52,8 +58,11 @@
 
               <div class="mb-3">
                 <select multiple class="custom-select" formControlName="CityRight">
-
-            <option *ngFor="let city of CityRight" [ngValue]="city" (change)="changeCity($event)">{{city}}</option>
+                  <option #itmConf *ngFor="let item of confirmed.sift; let idx=index;"
+                  (click)="disabled ? null : selectItem(confirmed.pick, item); shiftClick($event, idx, confirmed, item)"
+                  [ngClass]="{selected: isItemSelected(confirmed.pick, item), disabled: disabled}"
+                  [draggable]="!disabled && format.draggable" (dragstart)="drag($event, item, confirmed)" (dragend)="dragEnd(confirmed)">{{item._name}}</option>
+            <!-- <option *ngFor="let city of CityRight" [ngValue]="city" (change)="changeCity($event)">{{city}}</option> -->
           </select>
 
                 <!-- error block -->
@@ -68,14 +77,15 @@
           </div>
           <div id="outer">
             <div class="inner">
-              <button type="submit" class="btn btn-danger btn-block" style ="display:inline;">All</button></div>
+            <button type="submit" class="btn btn-primary pull-left" (click)="selectAll(available)" [disabled]="disabled || isAllSelected(available)" style ="display:inline;">Deselect All</button></div>
             <div class="inner">
-              <button type="submit" class="btn btn-danger btn-block"  style ="display:inline;">None</button></div>
+            <button type="submit" class="btn btn-primary pull-right" (click)="selectNone(available)"
+            [disabled]="!isAnySelected(available)"  style ="display:inline;">None</button></div>
           </div>
 
 
         </form><!-- Form ends -->
       </div>
-    </div>
-  </div>
+    
+ 
 </div>
