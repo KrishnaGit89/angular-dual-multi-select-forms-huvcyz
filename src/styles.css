@@ -42,7 +42,7 @@ label {
 }
 
 .group-gap {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 
 .btn.focus,
@@ -57,7 +57,14 @@ label {
 .custom-select:focus {
   border: 1px solid #0C1CFF;
 }
-
+#outer{
+  width: 100%;
+  text-align: center;
+}
+.inner{
+  display: inline-block;
+  padding: 2px 2px 2px 2px;
+}
 .btn-success,
 .btn-success:hover {
   color: #312BC6;
@@ -67,7 +74,7 @@ label {
 
 .btn-group-lg>.btn,
 .btn-lg {
-  padding: 13px 15px 15px;
+  padding: 13px 20px 15px;
   font-size: 16px;
   border-radius: 0;
   text-transform: uppercase;
@@ -183,6 +190,8 @@ label {
   color: #222222;
   background-color: #FDFDFD;
   border: 1px solid #312BC6;
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .custom-control-input:checked~.custom-control-label::before {

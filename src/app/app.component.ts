@@ -16,22 +16,25 @@ export class AppComponent {
   constructor(public fb: FormBuilder) { }
 
   /*########### Form ###########*/
-  registrationForm = this.fb.group({
+  leftForm = this.fb.group({
+    cityName: ['', [Validators.required]]
+  })
+  rightForm = this.fb.group({
     cityName: ['', [Validators.required]]
   })
 
   // Getter method to access formcontrols
   get cityName() {
-    return this.registrationForm.get('cityName');
+    return this.leftForm.get('cityName');
   }
 
   /*########### Template Driven Form ###########*/
   onSubmit() {
     this.isSubmitted = true;
-    if (!this.registrationForm.valid) {
+    if (!this.leftForm.valid) {
       return false;
     } else {
-      alert(JSON.stringify(this.registrationForm.value))
+      alert(JSON.stringify(this.leftForm.value))
     }
 
   }
