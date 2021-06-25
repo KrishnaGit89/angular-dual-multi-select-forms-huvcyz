@@ -1,70 +1,81 @@
 <div class="jumbotron text-center">
-<h1 class="display-5">
-  Angular Dual Multiselect
-</h1>
+  <h1 class="display-5">
+    Angular Dual Multiselect
+  </h1>
 </div>
 
 <div class="container">
-<div class="row custom-wrapper">
-  <div class="col-md-12">
-    <div class="col-md-6" style ="display:inline-block;">
-       <!-- Form starts -->
-    <form [formGroup]="leftForm" (ngSubmit)="onSubmit()">
-      <!-- Gender -->
-      <div class="group-gap">
-        <div class="d-block my-3">
+  <div class="row custom-wrapper">
+    <div class="col-md-12">
+      <div class="col-md-6" style="display:inline-block;">
+        <!-- Form starts -->
+        <form [formGroup]="leftForm" (ngSubmit)="onSubmit()">
+          <!-- Gender -->
+          <div class="group-gap">
+            <div class="d-block my-3">
 
-          <div class="mb-3">
-            <select multiple class="custom-select" formControlName="CityLeft">
+              <div class="mb-3">
+                <select multiple class="custom-select" formControlName="CityLeft">
+              <option *ngFor="let item of available.sift; let idx=index;"
+              (click)="disabled ? null : selectItem(available.pick, item); shiftClick($event, idx, available, item)"
+              [ngClass]="{selected: isItemSelected(available.pick, item), disabled: disabled}"
+              [draggable]="!disabled && format.draggable" (dragstart)="drag($event, item, available)" (dragend)="dragEnd(available)"
+              >{{item._name}}</option>
+<!-- 
+            <option *ngFor="let city of CityLeft" [ngValue]="city" (change)="changeCity($event)">{{city}}</option> -->
 
-            <option *ngFor="let city of CityLeft" [ngValue]="city" (change)="changeCity($event)">{{city}}</option>
           </select>
 
-            <!-- error block -->
-            <div class="invalid-feedback" *ngIf="isSubmitted && CityLeft.errors?.required">
-              <sup>*</sup>Please enter your city name
+                <!-- error block -->
+                <div class="invalid-feedback" *ngIf="isSubmitted && CityLeft.errors?.required">
+                  <sup>*</sup>Please enter your city name
+                </div>
+              </div>
+
             </div>
           </div>
-
-        </div>
+          <div id="outer">
+            <div class="inner">
+              <button type="submit" class="btn btn-primary pull-left" (click)="selectAll(available)" [disabled]="disabled || isAllSelected(available)" style ="display:inline;">All</button>
+            </div>
+            <div class="inner"><button type="submit" class="btn btn-primary pull-right" (click)="selectNone(available)"
+          [disabled]="!isAnySelected(available)"  style ="display:inline;">None</button></div>
+          </div>
+        </form><!-- Form ends -->
       </div>
-      <div id="outer">
-        <div class="inner"><button type="submit" class="btn btn-danger btn-block" style ="display:inline;">All</button></div>
-        <div class="inner"><button type="submit" class="btn btn-danger btn-block"  style ="display:inline;">None</button></div>
-      </div>
-    </form><!-- Form ends -->
-    </div>
-     <div class="col-md-6" style ="display:inline-block">
-       <!-- Form starts -->
-    <form [formGroup]="rightForm" (ngSubmit)="onSubmit()">
-      <!-- Gender -->
-      <div class="group-gap">
-        <div class="d-block my-3">
+      <div class="col-md-6" style="display:inline-block">
+        <!-- Form starts -->
+        <form [formGroup]="rightForm" (ngSubmit)="onSubmit()">
+          <!-- Gender -->
+          <div class="group-gap">
+            <div class="d-block my-3">
 
-          <div class="mb-3">
-            <select multiple class="custom-select" formControlName="CityRight">
+              <div class="mb-3">
+                <select multiple class="custom-select" formControlName="CityRight">
 
             <option *ngFor="let city of CityRight" [ngValue]="city" (change)="changeCity($event)">{{city}}</option>
           </select>
 
-            <!-- error block -->
-            <div class="invalid-feedback" *ngIf="isSubmitted && CityRight.errors?.required">
-              <sup>*</sup>Please enter your city name
+                <!-- error block -->
+                <div class="invalid-feedback" *ngIf="isSubmitted && CityRight.errors?.required">
+                  <sup>*</sup>Please enter your city name
+                </div>
+              </div>
+
             </div>
+
+
+          </div>
+          <div id="outer">
+            <div class="inner">
+              <button type="submit" class="btn btn-danger btn-block" style ="display:inline;">All</button></div>
+            <div class="inner">
+              <button type="submit" class="btn btn-danger btn-block"  style ="display:inline;">None</button></div>
           </div>
 
-        </div>
-       
-      
-      </div>
-      <div id="outer">
-        <div class="inner"><button type="submit" class="btn btn-danger btn-block" style ="display:inline;">All</button></div>
-        <div class="inner"><button type="submit" class="btn btn-danger btn-block"  style ="display:inline;">None</button></div>
-      </div>
 
-     
-    </form><!-- Form ends -->
-     </div>
+        </form><!-- Form ends -->
+      </div>
+    </div>
   </div>
-</div>
 </div>
