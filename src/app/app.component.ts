@@ -67,11 +67,11 @@ destinationStations: any;
     this.CityLeft = [
       { key: 1, station: 'Hyderabad', state: 'HYD' },
       { key: 2, station: 'Banglore', state: 'BNG' },
-      { key: 3, station: 'WestBengal', state: 'NM' },
-      { key: 4, station: 'Delhi', state: 'NM' },
-      { key: 5, station: 'Mumbai', state: 'CO' },
-      { key: 6, station: 'Goa', state: 'NM' },
-      { key: 7, station: 'Lucknow', state: 'NM' }
+      { key: 3, station: 'WestBengal', state: 'CCU' },
+      { key: 4, station: 'Delhi', state: 'DEL' },
+      { key: 5, station: 'Mumbai', state: 'MUM' },
+      { key: 6, station: 'Goa', state: 'GOA' },
+      { key: 7, station: 'Lucknow', state: 'LUK' }
     ];
     this.sourceStations = JSON.parse(JSON.stringify(this.CityLeft));
     this.CityRight =[{key: 1, station: 'Hyderabad', state: 'HYD'}];
