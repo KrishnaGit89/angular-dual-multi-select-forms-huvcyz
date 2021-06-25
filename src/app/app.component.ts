@@ -73,8 +73,9 @@ destinationStations: any;
       { key: 6, station: 'Goa', state: 'GOA' },
       { key: 7, station: 'Lucknow', state: 'LUK' }
     ];
-    this.sourceStations = JSON.parse(JSON.stringify(this.CityLeft));
     this.CityRight =[{key: 1, station: 'Hyderabad', state: 'HYD'}];
+
+    this.sourceStations = JSON.parse(JSON.stringify(this.CityLeft));
     this.destinationStations = JSON.parse(JSON.stringify(this.CityRight));
     this.destination = this.CityRight;
     this.key = 'key';
